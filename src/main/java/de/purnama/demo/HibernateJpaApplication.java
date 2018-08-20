@@ -39,10 +39,11 @@ public class HibernateJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		System.out.println(jacksonObjectMapper.writeValueAsString(userRepository.findAll()));
+		//System.out.println(jacksonObjectMapper.writeValueAsString(userRepository.findAll()));
 		//System.out.println(jacksonObjectMapper.writeValueAsString(highlightRepository.findAll()));
 		//System.out.println(jacksonObjectMapper.writeValueAsString(jdbcExample.getUserDataById(1L)));
 		//System.out.println(jacksonObjectMapper.writeValueAsString(emx.getAllUserDataForceEager()));
+		System.out.println(jacksonObjectMapper.writeValueAsString(emx.getUserDataByIdWithCriteria(1L)));
 	}
 	
 	@Bean
