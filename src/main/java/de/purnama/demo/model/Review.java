@@ -48,11 +48,11 @@ public class Review {
     @Column
     private Long waitingTime;
 
-    @ManyToOne
+    @ManyToOne()
     @JsonIgnore
     private Department department;
 
-    @ManyToOne
+    @ManyToOne()
     @JsonIgnore
     private CivilService civilService;
 

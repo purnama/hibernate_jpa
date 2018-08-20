@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.purnama.demo.repository.HighlightRepository;
 import de.purnama.demo.repository.UserRepository;
+import de.purnama.demo.service.EntityManagerExample;
 import de.purnama.demo.service.JdbcExample;
 
 @SpringBootApplication
@@ -28,17 +29,20 @@ public class HibernateJpaApplication implements CommandLineRunner {
 	@Autowired
 	private JdbcExample jdbcExample;
 	
+	@Autowired
+	private EntityManagerExample emx;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateJpaApplication.class, args);
 	}
 
 	@Override
-	@Transactional
 	public void run(String... args) throws Exception {
 
-		//System.out.println(jacksonObjectMapper.writeValueAsString(userRepository.findAll()));
+		System.out.println(jacksonObjectMapper.writeValueAsString(userRepository.findAll()));
 		//System.out.println(jacksonObjectMapper.writeValueAsString(highlightRepository.findAll()));
-		System.out.println(jacksonObjectMapper.writeValueAsString(jdbcExample.getUserDataById(1L)));
+		//System.out.println(jacksonObjectMapper.writeValueAsString(jdbcExample.getUserDataById(1L)));
+		//System.out.println(jacksonObjectMapper.writeValueAsString(emx.getAllUserDataForceEager()));
 	}
 	
 	@Bean

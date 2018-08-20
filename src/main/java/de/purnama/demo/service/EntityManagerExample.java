@@ -21,10 +21,20 @@ public class EntityManagerExample {
 	}
 	
 	public List<UserData> getAllUserData(){
-		em.getTransaction().begin();
+		
 		Query query = em.createQuery("select ud from UserData ud");
 		List<UserData> resultList = query.getResultList();
-		em.getTransaction().commit();
+		
+		return resultList;
+	}
+	
+	public List<UserData> getAllUserDataForceEager(){
+		Query query = em.createQuery("select ud from UserData ud "
+				+ "left join fetch ud.reviewList reviews "
+				+ "left join fetch reviews.reviewStatement revStat "
+				+ "left join fetch reviews.department dept"
+				+ "left join fetch reviews.civilService civServ");
+		List<UserData> resultList = query.getResultList();
 		return resultList;
 	}
 }
